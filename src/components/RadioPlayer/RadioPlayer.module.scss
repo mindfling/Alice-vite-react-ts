@@ -1,0 +1,72 @@
+.radioPlayer {
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  max-width: 360px;
+}
+
+.title {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.stations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stationBtn {
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  border-radius: 6px;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+.stationBtn.active {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.controls {
+  margin-top: 0.5rem;
+}
+
+.playPauseBtn {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: var(--color-border);
+    cursor: not-allowed;
+  }
+}
+
+.error {
+  margin-top: 1rem;
+  color: #d9534f;
+  font-size: 0.9rem;
+}
+
+.current {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
