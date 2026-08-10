@@ -1,3 +1,4 @@
+// * декларация объявление типов модулей для ts
 // src/global.d.ts
 
 declare module '*.module.scss' {

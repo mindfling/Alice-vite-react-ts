@@ -1,0 +1,17 @@
+.mainContent {
+  border: 1px solid lawngreen;
+  flex: 1;
+  /* чтобы футер был прижатым к низу, если контента мало */
+  padding: 2rem 1.5rem;
+}
+
+.heading {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+.text {
+  line-height: 1.6;
+  max-width: 80%;
+}

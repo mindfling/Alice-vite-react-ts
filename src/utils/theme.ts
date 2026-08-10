@@ -2,7 +2,6 @@
 
 export type ThemeName = 'light' | 'dark';
 
-
 /**
  * Устанавливает тему на уровне документа.
  * Поддерживает 'light' и 'dark'.
@@ -16,7 +15,6 @@ const setTheme = (theme: ThemeName) => {
     document.documentElement.classList.add('light');
   }
 };
-
 
 /**
  * Применяет тёмную тему.
@@ -32,7 +30,9 @@ export const applyLightTheme = () => {
   setTheme('light');
 };
 
-
+/**
+ * Получить текущую тему.
+ */
 export const getCurrentTheme = (): ThemeName => {
   const result = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
   return result;

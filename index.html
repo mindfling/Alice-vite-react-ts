@@ -4,11 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>alice-hello</title>
+
+    <!-- Защита от мигания темы: ставим тёмную тему ДО загрузки JS -->
+    <script>
+      (function() {
+        console.log('Hello theme');
+        const stored = localStorage.getItem('app-theme');
+        console.log('stored theme: ', stored);
+        if (stored === 'dark' || stored === null) {
+          document.documentElement.classList.add('dark');
+          if (stored === null) localStorage.setItem('app-theme', 'dark'); // по умолчанию dark
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+
+    <title id="title">alice-hello</title>
     <link href="style.css" rel="stylesheet">
   </head>
-  <body>
+    
+  <body class="page">
     <div id="root"></div>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
