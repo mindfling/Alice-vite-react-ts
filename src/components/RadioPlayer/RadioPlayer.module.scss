@@ -3,7 +3,7 @@
   border-radius: 8px;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
-  max-width: 360px;
+  max-width: 450px;
 }
 
 .title {
@@ -41,21 +41,46 @@
 }
 
 .controls {
+  display: flex;
+  gap: 0.75rem;
   margin-top: 0.5rem;
 }
 
-.playPauseBtn {
-  width: 100%;
+.playPauseBtn,
+.playBtn,
+.stopBtn {
+  flex: 1;
   padding: 0.7rem;
-  background-color: var(--color-primary);
-  color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 500;
+}
+
+.playPauseBtn {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.playBtn {
+  background-color: var(--color-primary);
+  color: #fff;
 
   &:disabled {
     background-color: var(--color-border);
     cursor: not-allowed;
+    color: var(--color-text);
+  }
+}
+
+.stopBtn {
+  background-color: #d9534f;
+  color: #fff;
+
+  &:disabled {
+    background-color: var(--color-border);
+    cursor: not-allowed;
+    color: var(--color-text);
   }
 }
 

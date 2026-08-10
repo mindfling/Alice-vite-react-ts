@@ -35,8 +35,8 @@ export const STATIONS: Array<Station> = [
   },
   {
     id: '6',
-    name: 'Маяк',
-    url: 'https://icecast-vgtrk.cdnvideo.ru/mayakfm_aac_64kbps',
+    name: 'Top40',
+    url: 'http://eptop128server.streamr.ru:8033/eptop128',
   },
   {
     id: '7',
@@ -62,5 +62,20 @@ export const STATIONS: Array<Station> = [
     id: '11',
     name: 'Классическая музыка',
     url: 'http://stream.srg-ssr.ch/m/rsc_de/mp3_128',
+  },
+  {
+    id: '12',
+    name: 'Anime Radio',
+    url: 'https://pool.anison.fm:9000/AniSonFM%28320%29?nocache=0.9834540412142996',
+  },
+  {
+    id: '13',
+    name: 'DFM',
+    url: 'https://dfm.hostingradio.ru/dfm128.mp3',
+  },
+  {
+    id: '14',
+    name: '90\`s Eurodance',
+    url: 'https://listen9.myradio24.com/5967',
   },
 ];
