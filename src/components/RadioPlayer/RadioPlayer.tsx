@@ -2,14 +2,16 @@ import { useState } from "react";
 import styles from "./RadioPlayer.module.scss";
 import { STATIONS } from "./stations";
 
+const audioRef = new Audio(STATIONS[10].url);
+
 export const RadioPlayer = () => {
-  const [currentStation, setCurrentStation] = useState(STATIONS[0]);
+  const [currentStation, setCurrentStation] = useState(STATIONS[10]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Создаём один экземпляр Audio, но меняем у него src при смене станции
-  const audioRef = new Audio(currentStation.url);
+  console.log('играем audioRef: ', audioRef);
 
   const togglePlay = () => {
     if (!isPlaying) {
@@ -62,7 +64,7 @@ export const RadioPlayer = () => {
           >
             {station.name}
           </button>
-          
+
         ))}
 
       </div>
