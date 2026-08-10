@@ -9,7 +9,7 @@ import {
 } from "../../utils/theme";
 
 export const Header = () => {
-  const [theme, setThemeState] = useState<ThemeName>('light');
+  const [theme, setThemeState] = useState<ThemeName>("light");
 
   useEffect(() => {
     setThemeState(getCurrentTheme());
@@ -27,13 +27,29 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>My Hello Alice React App</h1>
+      <h1 className={styles.title}>My online Radio React ts App</h1>
       <nav className={styles.nav}>
-        <a href="#" className={styles.link}>Главная</a>
+        <a
+          href="#"
+          className={styles.link}
+          title="Вернуться на Главную страницу проекта"
+        >
+          Главная
+        </a>
 
-        <a href="#" className={styles.link}>О проекте</a>
+        <a
+          href="#"
+          className={styles.link}
+          title="Просмотреть информацию О проекте"
+        >
+          О проекте
+        </a>
 
-        <button onClick={toggleTheme} className={styles.toggleBtn}>
+        <button
+          onClick={toggleTheme}
+          className={styles.toggleBtn}
+          title={`Переключиться на ${theme === "dark" ? "Светлую" : "Тёмную"} тему оформления`}
+        >
           {theme === "light" ? "☀️ Светлая" : "🌙 Тёмная"}
         </button>
       </nav>
