@@ -1,10 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import "@a1rth/css-normalize";
+// import '../node_modules/@a1rth/css-normalize';
+import "./styles/variables.scss";
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+// Фиксируем тёмную тему
+document.documentElement.classList.add("dark");
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
     <App />
-  </StrictMode>,
-)
+  </React.StrictMode>,
+);
