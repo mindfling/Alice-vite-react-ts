@@ -23,6 +23,7 @@ export const RadioPlayer = () => {
   // ПРАВИЛЬНО: используем HTMLAudioElement вместо Audio
   const audioElement = useRef<HTMLAudioElement | null>(null);
 
+  // --- Чтение/сохранение громкости ---
   // 1. Чтение громкости из localStorage при монтировании
   useEffect(() => {
     const saved = localStorage.getItem("radio-player-volume");
@@ -44,7 +45,17 @@ export const RadioPlayer = () => {
     if (audioElement.current) {
       audioElement.current.volume = volume;
     }
-  }, [volume]);
+  }, [volume, currentStation]); //todo
+
+  // --- Функция выбора иконки по уровню громкости ---
+  const getVolumeIcon = (vol: number): string => {
+    if (vol === 0) return "🔇"; // тишина
+    if (vol <= 0.3) return "🔈"; // тихо
+    if (vol <= 0.7) return "🔉"; // нормально
+    return "🔊"; // громко
+  };
+
+  const currentIcon = getVolumeIcon(volume);
 
   // Создаём Audio один раз
   // todo
@@ -66,10 +77,10 @@ export const RadioPlayer = () => {
   const stopAndClear = () => {
     const el = audioElement.current;
     if (!el) return;
-    el.pause();
-    el.currentTime = 0;
-    el.src = "";
-    el.load();
+    el.pause(); // 1. Останавливаем
+    el.currentTime = 0; // 2. Сбрасываем позицию
+    el.src = ""; // 3. Очищаем источник (опционально, но полезно)
+    el.load(); // 4. Перезагружаем элемент — буфер очищается
   };
 
   const play = () => {
@@ -128,11 +139,12 @@ export const RadioPlayer = () => {
       return;
     }
 
-    const el = audioElement.current;
-    el.pause(); // 1. Останавливаем
-    el.currentTime = 0; // 2. Сбрасываем позицию
-    el.src = ""; // 3. Очищаем источник (опционально, но полезно)
-    el.load(); // 4. Перезагружаем элемент — буфер очищается
+    stopAndClear();
+    // const el = audioElement.current;
+    // el.pause(); // 1. Останавливаем
+    // el.currentTime = 0; // 2. Сбрасываем позицию
+    // el.src = ""; // 3. Очищаем источник (опционально, но полезно)
+    // el.load(); // 4. Перезагружаем элемент — буфер очищается
 
     if (error) {
       setError(null);
@@ -148,7 +160,7 @@ export const RadioPlayer = () => {
     <aside className={styles.radioPlayer}>
       <h3 className={styles.title}>Онлайн‑радио</h3>
 
-      {/* Блок громкости */}
+      {/* Блок громкости: текст → ползунок → иконка */}
       <div className={styles.volumeControl}>
         <span className={styles.volumeLabel}>Громкость</span>
         <input
@@ -161,8 +173,13 @@ export const RadioPlayer = () => {
           className={styles.volumeRange}
           aria-label="Регулировка громкости"
         />
+        {/* Иконка справа от ползунка */}
+        <span className={styles.volumeIcon} aria-hidden="true">
+          {currentIcon} {Math.round(volume * 100)}%
+        </span>
       </div>
 
+      {/* Дальше идёт блок с треком, станции, кнопки и т.д. */}
       <div className={styles.stations}>
         {STATIONS.map((station) => (
           <button
@@ -210,4 +227,4 @@ export const RadioPlayer = () => {
       </p>
     </aside>
   );
-};;;;;
+};;;;;;

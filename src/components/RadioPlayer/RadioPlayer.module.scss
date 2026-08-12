@@ -102,14 +102,16 @@
 .volumeControl {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 12px;
+  /* чуть больше отступа для иконки справа */
+  margin-bottom: 14px;
 }
 
 .volumeLabel {
   font-size: 13px;
-  color: #555;
-  min-width: 40px;
+  color: #666;
+  min-width: 56px;
+  /* фиксируем ширину, чтобы текст не «прыгал» */
   text-align: right;
 }
 
@@ -118,21 +120,23 @@
   max-width: 200px;
 }
 
+.volumeIcon {
+  font-size: 20px;
+  /* чуть крупнее, чтобы было заметнее */
+  line-height: 1;
+  flex-shrink: 0;
+  /* иконка не сжимается */
+  color: #333;
+  /* если вдруг шрифт будет серым */
+}
+
+/* Стили ползунка (оставляем как были) */
 .volumeRange::-webkit-slider-thumb {
   width: 14px;
   height: 14px;
   background: #fff;
   border: 2px solid #333;
   cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
-
-.volumeRange::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  background: #fff;
-  border: 2px solid #333;
-  cursor: pointer;
-}
-
-
 
