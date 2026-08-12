@@ -2,6 +2,7 @@ export type Station = {
   id: string;
   name: string;
   url: string;
+  api?: string;
 }
 
 /**
@@ -77,5 +78,11 @@ export const STATIONS: Array<Station> = [
     id: '14',
     name: '90\`s Eurodance',
     url: 'https://listen9.myradio24.com/5967',
+  },
+  {
+    id: '15',
+    name: 'Radio Monte Carlo',
+    url: 'https://montecarlo.hostingradio.ru/montecarlo128.mp3',
+    api: 'https://montecarlo.ru/api/n/current',
   },
 ];
