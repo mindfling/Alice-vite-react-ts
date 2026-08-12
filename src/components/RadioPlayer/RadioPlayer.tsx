@@ -23,6 +23,17 @@ export const RadioPlayer = () => {
   // ПРАВИЛЬНО: используем HTMLAudioElement вместо Audio
   const audioElement = useRef<HTMLAudioElement | null>(null);
 
+  // todo logger
+  useEffect(() => {
+    console.log("log:");
+    console.log("currentStation: ", currentStation);
+    console.log("isPlaying: ", isPlaying);
+    console.log("loading: ", loading);
+    console.log("error: ", error);
+    console.log("track: ", track);
+    console.log("volume: ", volume);
+  }, [currentStation, isPlaying, loading, error, track, volume]);
+
   // --- Чтение/сохранение громкости ---
   // 1. Чтение громкости из localStorage при монтировании
   useEffect(() => {
@@ -38,6 +49,9 @@ export const RadioPlayer = () => {
   // 2. Сохранение громкости в localStorage при изменении
   useEffect(() => {
     localStorage.setItem("radio-player-volume", volume.toString());
+    if (audioElement.current) {
+      audioElement.current.volume = volume;
+    }
   }, [volume]);
 
   // 3. Синхронизация с Audio-элементом
@@ -45,7 +59,7 @@ export const RadioPlayer = () => {
     if (audioElement.current) {
       audioElement.current.volume = volume;
     }
-  }, [volume, currentStation]); //todo
+  }, [volume]); //todo
 
   // --- Функция выбора иконки по уровню громкости ---
   const getVolumeIcon = (vol: number): string => {
@@ -90,6 +104,9 @@ export const RadioPlayer = () => {
     audioElement.current
       .play()
       .then(() => {
+        if (audioElement.current?.volume) {
+          audioElement.current.volume = volume;
+        }
         setLoading(false);
         setIsPlaying(true);
       })
@@ -106,10 +123,16 @@ export const RadioPlayer = () => {
     audioElement.current.pause();
     audioElement.current.currentTime = 0;
     setIsPlaying(false);
+    if (audioElement.current?.volume) {
+      audioElement.current.volume = volume;
+    }
   };
 
   const togglePlay = () => {
     if (!audioElement.current) return;
+    if (audioElement.current?.volume) {
+      audioElement.current.volume = volume;
+    }
 
     if (!isPlaying) {
       setLoading(true);
@@ -133,7 +156,6 @@ export const RadioPlayer = () => {
   };
 
   const changeStation = (station: (typeof STATIONS)[number]) => {
-    console.log("change station");
     if (!audioElement.current) {
       console.log("change return exit");
       return;
@@ -156,7 +178,7 @@ export const RadioPlayer = () => {
     if (isPlaying) {
       stop();
     }
-    
+
     console.log("change station and volume", volume);
     console.log("isPlaying: ", isPlaying);
     console.log("currentStation: ", currentStation);
@@ -233,4 +255,4 @@ export const RadioPlayer = () => {
       </p>
     </aside>
   );
-}
+};
