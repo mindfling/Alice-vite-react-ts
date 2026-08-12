@@ -95,3 +95,44 @@
   font-size: 0.95rem;
   color: var(--color-text);
 }
+
+
+
+// * регулятор громкости
+.volumeControl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.volumeLabel {
+  font-size: 13px;
+  color: #555;
+  min-width: 40px;
+  text-align: right;
+}
+
+.volumeRange {
+  flex: 1;
+  max-width: 200px;
+}
+
+.volumeRange::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid #333;
+  cursor: pointer;
+}
+
+.volumeRange::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid #333;
+  cursor: pointer;
+}
+
+
+
