@@ -139,6 +139,8 @@ export const RadioPlayer = () => {
       return;
     }
 
+    audioElement.current.volume = volume;
+
     stopAndClear();
     // const el = audioElement.current;
     // el.pause(); // 1. Останавливаем
@@ -154,6 +156,10 @@ export const RadioPlayer = () => {
     if (isPlaying) {
       stop();
     }
+    
+    console.log("change station and volume", volume);
+    console.log("isPlaying: ", isPlaying);
+    console.log("currentStation: ", currentStation);
   };
 
   return (
@@ -227,4 +233,4 @@ export const RadioPlayer = () => {
       </p>
     </aside>
   );
-};;;;;;
+}
